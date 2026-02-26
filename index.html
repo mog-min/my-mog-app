@@ -41,21 +41,35 @@ body {
 
 <script>
 function launchStars() {
-  for (let i = 0; i < 40; i++) { // ← 数を増やしてる！
-    const star = document.createElement("div");
-    star.className = "star";
-    star.innerText = "🌟";
+for (let i = 0; i < 40; i++) {
 
-    star.style.left = Math.random() * window.innerWidth + "px";
+  const star = document.createElement("div");
+  star.textContent = "★";
+  star.style.position = "fixed";
+  star.style.fontSize = "24px";
 
-    const duration = Math.random() * 0.5 + 0.5; // ← スピードをランダム化
-    star.style.animationDuration = duration + "s";
+  const fromLeft = Math.random() < 0.5;
 
-    document.body.appendChild(star);
+  // 出る場所（左 or 右）
+  star.style.left = fromLeft ? "0px" : "100vw";
+  star.style.bottom = "0px";
 
-    setTimeout(() => {
-      star.remove();
-    }, duration * 1000);
+  document.body.appendChild(star);
+
+  const x = fromLeft
+    ? Math.random() * 300 + 100   // 左→右上
+    : -(Math.random() * 300 + 100); // 右→左上
+
+  star.animate([
+    { transform: "translate(0, 0)", opacity: 1 },
+    { transform: `translate(${x}px, -100vh)`, opacity: 0 }
+  ], {
+    duration: 1400,
+    easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+  });
+
+  setTimeout(() => star.remove(), 1400);
+}
   }
 }
 </script>
