@@ -1,0 +1,9 @@
+
+{
+  "name": "My First App",
+  "short_name": "MyApp",
+  "start_url": "./app.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
