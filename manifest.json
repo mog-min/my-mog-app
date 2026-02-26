@@ -1,6 +1,6 @@
 
 {
-  "name": "My First App",
+  "name": "マイアプリ",
   "short_name": "マイアプリ",
   "start_url": "./index.html",
   "display": "standalone",
