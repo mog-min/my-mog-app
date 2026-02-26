@@ -4,10 +4,56 @@
   <meta charset="UTF-8">
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .star {
+      position: absolute;
+      bottom: 0;
+      font-size: 40px;
+      animation: pop 1s ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-300px);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;">
-  <button onclick="alert('やったね！アプリ起動！')">
+
+<body>
+  <button onclick="popStar()">
     押してみて！
   </button>
+
+  <script>
+    function popStar() {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.textContent = "🌟";
+
+      star.style.left = Math.random() * 100 + "vw";
+
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
